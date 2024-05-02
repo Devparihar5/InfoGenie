@@ -1,4 +1,4 @@
-# Research Assistant
+# InfoGenie:Research Assistant
 
 ## Description
 
@@ -8,12 +8,12 @@ The Research Assistant is a powerful research assistant powered by the Gemini Pr
 
 1. Clone the repository:
    ```bash
-   git clone https://github.com/Devparihar5/gemini-ai-hack.git
+   git clone https://github.com/Devparihar5/InfoGenie.git
    ```
 
 2. Navigate to the project directory:
    ```bash
-   cd gemini-ai-hack
+   cd InfoGenie
    ```
 
 3. Create a virtual environment (optional but recommended):

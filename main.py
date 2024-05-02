@@ -65,7 +65,7 @@ class StreamlitApp:
         return embeddings_generator.generate_embeddings(docs)
 
     def run(self):
-        st.title("Research Assistant! 🤖")
+        st.title("InfoGenie")
         st.subheader("Type your query and let's uncover some answers! 🕵️‍♂️")
 
         st.sidebar.title("Add URLs on topics you'd like to explore and see the magic unfold! ✨")
