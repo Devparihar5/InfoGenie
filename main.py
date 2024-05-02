@@ -1,4 +1,3 @@
-from dotenv import load_dotenv
 import os
 import pickle
 import time
@@ -11,12 +10,11 @@ from langchain_community.vectorstores import FAISS
 from langchain_google_genai import GoogleGenerativeAIEmbeddings, ChatGoogleGenerativeAI
 from langchain_core.prompts import PromptTemplate
 
-# Load environment variables
-load_dotenv()
 
 # Configure Google Generative AI
 from google.generativeai import configure
-configure(api_key=os.getenv("GOOGLE_API_KEY"))
+
+configure(api_key=st.secrets["GOOGLE_API_KEY"])
 
 class DataLoader:
     def __init__(self, urls):
@@ -54,6 +52,18 @@ class StreamlitApp:
         self.query = None
         self.vectorIndex = None
 
+    def load_data(self, urls):
+        data_loader = DataLoader(urls)
+        return data_loader.load_data()
+
+    def split_documents(self, data):
+        text_splitter = TextSplitter(separators=["\n\n", "\n", " "], chunk_size=1000, chunk_overlap=100)
+        return text_splitter.split_documents(data)
+
+    def generate_embeddings(self, docs):
+        embeddings_generator = EmbeddingsGenerator(model_path="models/embedding-001")
+        return embeddings_generator.generate_embeddings(docs)
+
     def run(self):
         st.title("Research Assistant! 🤖")
         st.subheader("Type your query and let's uncover some answers! 🕵️‍♂️")
@@ -63,14 +73,9 @@ class StreamlitApp:
         process = st.sidebar.button("Run 🚀")
 
         if process:
-            data_loader = DataLoader(urls)
-            data = data_loader.load_data()
-
-            text_splitter = TextSplitter(separators=["\n\n", "\n", " "], chunk_size=1000, chunk_overlap=100)
-            docs = text_splitter.split_documents(data)
-
-            embeddings_generator = EmbeddingsGenerator(model_path="models/embedding-001")
-            vectorstore = embeddings_generator.generate_embeddings(docs)
+            data = self.load_data(urls)
+            docs = self.split_documents(data)
+            vectorstore = self.generate_embeddings(docs)
 
             with open(self.file_path, "wb") as f:
                 pickle.dump(vectorstore, f)
@@ -107,5 +112,5 @@ class StreamlitApp:
         st.write(result)
 
 if __name__ == "__main__":
-    app = StreamlitApp(file_path="faiss_store_gemini.pkl")
+    app = StreamlitApp(file_path=r"model/faiss_store_gemini.pkl")
     app.run()
