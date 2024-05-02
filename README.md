@@ -37,5 +37,3 @@ The Langchain pipeline orchestrates the entire workflow of the Research Assistan
 5. **Generate Prompt:** Using the retrieved context, the Research Assistant generates a concise prompt tailored to address the user's query.
 
 6. **Provide Answer:** Finally, the Research Assistant provides the user with a well-informed answer based on the generated prompt.
-
-By integrating these components seamlessly, the Research Assistant offers users a powerful tool for conducting efficient and effective research tasks.
