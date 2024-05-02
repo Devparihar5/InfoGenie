@@ -4,6 +4,53 @@
 
 The Research Assistant is a powerful research assistant powered by the Gemini Pro generative model. It streamlines the process of gathering information from web pages, breaking them down into smaller, digestible chunks, and embedding them into vectors for quick retrieval. When users pose questions, the Research Assistant leverages its capabilities to retrieve relevant context, generate prompts, and provide concise answers.
 
+## Installation
+
+1. Clone the repository:
+   ```bash
+   git clone https://github.com/Devparihar5/gemini-ai-hack.git
+   ```
+
+2. Navigate to the project directory:
+   ```bash
+   cd gemini-ai-hack
+   ```
+
+3. Create a virtual environment (optional but recommended):
+   ```bash
+   python -m venv venv
+   ```
+
+4. Activate the virtual environment:
+   - On Windows:
+     ```bash
+     .\venv\Scripts\activate
+     ```
+   - On macOS and Linux:
+     ```bash
+     source venv/bin/activate
+     ```
+
+5. Install dependencies from requirements.txt:
+   ```bash
+   pip install -r requirements.txt
+   ```
+
+## Usage
+
+To use the Research Assistant, follow these steps:
+
+1. Run the main script:
+   ```bash
+   streamlit run main.py
+   ```
+
+2. Input your query or question when prompted.
+
+3. The Research Assistant will process your query, retrieve relevant information from web pages, generate a prompt, and provide you with a concise answer.
+
+4. Continue to ask questions or end the session when you're done.
+
 ## Components
 
 ### Generative Model: Gemini Pro
